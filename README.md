@@ -1,33 +1,28 @@
 # 🎓 Student Management System
 
-A secure and responsive **Student Management System** developed using **Java Servlets, JSP, JDBC, MySQL, Bootstrap 5, and Apache Tomcat 11**. The application demonstrates complete user authentication, session management, CRUD operations, form validation, password encryption, and secure access control following the MVC architecture.
+A secure and responsive **Student Management System** built using **Java Servlets, JSP, JDBC, MySQL, Bootstrap 5, and Apache Tomcat 11**.
 
-This project was developed as a hands-on learning project while exploring Java Full Stack development and serves as a portfolio-ready web application.
+The application allows students to register, log in securely, manage their profile, and perform CRUD operations while following the **MVC (Model-View-Controller)** architecture. It also demonstrates industry-standard concepts such as password hashing, session management, servlet filters, and authentication.
 
 ---
 
-# 📌 Features
+## 🚀 Features
 
-### 👤 User Authentication
+### 👤 User Management
 - Student Registration
-- Secure Login
-- Logout Functionality
-- Session Management
-- Cookie Management
-
-### 🔒 Security
-- SHA-256 Password Hashing
-- Authentication Filter
-- Protected Routes
-- Browser Cache Control
-- Duplicate Email Validation
-- HTML5 Form Validation
-
-### 📋 Student Management
+- Secure Login & Logout
 - View Student Details
 - Update Student Profile
 - Delete Student Account
-- Dashboard
+
+### 🔐 Security
+- SHA-256 Password Hashing
+- Session Management
+- Cookie Management
+- Authentication Filter
+- Cache Control (Prevents accessing protected pages after logout)
+- Duplicate Email Validation
+- HTML5 Form Validation
 
 ### 🎨 User Interface
 - Responsive Bootstrap 5 Design
@@ -38,41 +33,17 @@ This project was developed as a hands-on learning project while exploring Java F
 
 ---
 
-# 🛠️ Technologies Used
+# 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| Java 21 | Backend Programming |
-| Jakarta Servlet 6.0 | Request Processing |
-| JSP | Dynamic Web Pages |
-| JDBC | Database Connectivity |
-| MySQL | Database |
-| Apache Tomcat 11 | Web Server |
-| Bootstrap 5 | Responsive UI |
-| HTML5 | Frontend Structure |
-| CSS3 | Styling |
-
----
-
-# 🏗️ Project Architecture
-
-The project follows the **MVC (Model-View-Controller)** architecture.
-
-```
-                Client (Browser)
-                        │
-                        ▼
-                 JSP Pages (View)
-                        │
-                        ▼
-              Servlet Controller
-                        │
-                        ▼
-              StudentDAO (Model)
-                        │
-                        ▼
-                 MySQL Database
-```
+| Category | Technology |
+|----------|------------|
+| Language | Java 21 |
+| Backend | Jakarta Servlet 6.0 |
+| Frontend | JSP, HTML5, CSS3, Bootstrap 5 |
+| Database | MySQL |
+| Connectivity | JDBC |
+| Server | Apache Tomcat 11 |
+| Architecture | MVC |
 
 ---
 
@@ -83,29 +54,14 @@ StudentManagementSystem
 │
 ├── src
 │   ├── controller
-│   │     ├── LoginServlet.java
-│   │     ├── RegisterServlet.java
-│   │     ├── UpdateServlet.java
-│   │     ├── DeleteServlet.java
-│   │     └── LogoutServlet.java
-│   │
 │   ├── dao
-│   │     └── StudentDAO.java
-│   │
 │   ├── database
-│   │     └── DBConnection.java
-│   │
 │   ├── filter
-│   │     ├── AuthenticationFilter.java
-│   │     └── CacheControlFilter.java
-│   │
 │   ├── model
-│   │     └── Student.java
-│   │
 │   └── util
-│         └── PasswordUtil.java
 │
 ├── WebContent / webapp
+│   ├── css
 │   ├── login.jsp
 │   ├── register.jsp
 │   ├── home.jsp
@@ -115,132 +71,175 @@ StudentManagementSystem
 │   ├── header.jsp
 │   ├── footer.jsp
 │   ├── 404.jsp
-│   ├── 500.jsp
-│   └── css
+│   └── 500.jsp
 │
-├── screenshots
-│
+├── ScreenShorts
 ├── README.md
-│
 └── .gitignore
 ```
 
 ---
 
-# 🔐 Security Features
+# 🏗️ MVC Architecture
 
-This project implements several security mechanisms commonly used in Java web applications.
-
-- Passwords are encrypted using **SHA-256** before storing them in the database.
-- Authentication is handled using **HTTP Sessions**.
-- Browser Back Button access after logout is prevented using **Cache-Control Headers**.
-- Unauthorized users cannot access protected pages through **Servlet Filters**.
-- Duplicate email registration is prevented before inserting records into the database.
+```
+Browser
+   │
+   ▼
+JSP (View)
+   │
+   ▼
+Servlet (Controller)
+   │
+   ▼
+DAO (Model)
+   │
+   ▼
+MySQL Database
+```
 
 ---
 
-# 🚀 Application Workflow
+# 🔄 Application Workflow
 
-### Registration
+## Registration
 
 ```
-User
-   │
-   ▼
+Student
+    │
+    ▼
 Register Form
-   │
-   ▼
-Validation
-   │
-   ▼
+    │
+    ▼
+Input Validation
+    │
+    ▼
+Duplicate Email Check
+    │
+    ▼
 SHA-256 Password Hashing
-   │
-   ▼
-Database
+    │
+    ▼
+MySQL Database
 ```
 
-### Login
+## Login
 
 ```
-User
-   │
-   ▼
+Student
+    │
+    ▼
 Login Form
-   │
-   ▼
-SHA-256 Hash
-   │
-   ▼
-Database Verification
-   │
-   ▼
-Session Created
-   │
-   ▼
+    │
+    ▼
+SHA-256 Password Hashing
+    │
+    ▼
+Credential Verification
+    │
+    ▼
+Session Creation
+    │
+    ▼
 Dashboard
 ```
 
 ---
 
-# 💻 Database
+# 💾 Database
 
-Database Name
+### Database Name
 
 ```
 studentmanagementsystem
 ```
 
-Table
+### Table Name
 
 ```
 students
 ```
 
-Columns
+### Columns
 
-| Column | Type |
-|---------|------|
-| id | INT (Primary Key) |
-| name | VARCHAR |
-| email | VARCHAR |
-| password | VARCHAR |
-| phone | VARCHAR |
-| course | VARCHAR |
-| city | VARCHAR |
+| Column | Description |
+|---------|-------------|
+| id | Student ID |
+| name | Student Name |
+| email | Email Address |
+| password | SHA-256 Encrypted Password |
+| phone | Mobile Number |
+| course | Course Name |
+| city | City |
 
 ---
 
 # 📸 Screenshots
 
-Add screenshots after deployment.
+## Login Page
 
-- Login Page
-- Registration Page
-- Dashboard
-- Student Details
-- Update Profile
-- Delete Confirmation
-- Custom Error Pages
+![Login](ScreenShorts/login.png)
 
 ---
 
-# 📚 Concepts Covered
+## Registration Page
 
-This project demonstrates practical implementation of:
+![Register](ScreenShorts/register.png)
 
-- Java Servlets
-- JSP
-- JDBC
+---
+
+## Dashboard
+
+![Dashboard](ScreenShorts/dashboard.png)
+
+---
+
+## Student Details
+
+![Details](ScreenShorts/details.png)
+
+---
+
+## Update Profile
+
+![Update](ScreenShorts/update.png)
+
+---
+
+## Delete Confirmation
+
+![Delete](ScreenShorts/delete.png)
+
+---
+
+## Custom 404 Error Page
+
+![404](ScreenShorts/404.png)
+
+---
+
+## Custom 500 Error Page
+
+![500](ScreenShorts/500.png)
+
+---
+
+# 📖 Key Concepts Implemented
+
 - MVC Architecture
 - CRUD Operations
-- Sessions
-- Cookies
-- Servlet Filters
-- Exception Handling
-- Password Encryption
-- Form Validation
+- JDBC with MySQL
+- Java Servlets
+- JSP
+- Session Management
+- Cookie Management
 - Authentication & Authorization
-- Bootstrap Responsive UI
+- Servlet Filters
+- SHA-256 Password Encryption
+- HTML5 Validation
+- Exception Handling
+- Custom Error Pages
+- Responsive Bootstrap UI
 
 ---
 
@@ -248,13 +247,12 @@ This project demonstrates practical implementation of:
 
 - Forgot Password
 - Email Verification
-- Profile Picture Upload
 - Admin Panel
 - Role-Based Access Control
+- Profile Image Upload
+- REST API Integration
 - Spring Boot Migration
-- REST APIs
 - JWT Authentication
-- Docker Deployment
 
 ---
 
@@ -262,12 +260,12 @@ This project demonstrates practical implementation of:
 
 **Naveen Koppisetti**
 
-- 2026 Computer Science Engineering Graduate
-- Java Full Stack Developer
-- Passionate about Backend Development and Problem Solving
+- 🎓 2026 Computer Science Engineering Graduate
+- 💻 Java Full Stack Developer
+- 🌱 Passionate about Backend Development and Problem Solving
 
 ---
 
 # ⭐ Support
 
-If you found this project useful, consider giving it a ⭐ on GitHub.
+If you found this project useful, please consider giving it a **⭐ Star** on GitHub.
