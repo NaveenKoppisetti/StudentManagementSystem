@@ -8,10 +8,10 @@ public class DBConnection {
 
     public DBConnection() {
 
-    	String url = System.getenv().getOrDefault(
-    		    "DB_URL",
-    		    "jdbc:mysql://mysql-ca81bda-studentmanagementsystem29.d.aivencloud.com:24996/studentmanagementsystem?sslMode=VERIFY_IDENTITY"
-    		);
+        String url = System.getenv().getOrDefault(
+                "DB_URL",
+                "jdbc:mysql://mysql-ca81bda-studentmanagementsystem29.d.aivencloud.com:24996/studentmanagementsystem?sslMode=REQUIRED"
+        );
 
         String username = System.getenv().getOrDefault(
                 "DB_USERNAME",
@@ -20,8 +20,12 @@ public class DBConnection {
 
         String password = System.getenv("DB_PASSWORD");
 
-        try {
+        // Debug logs
+        System.out.println("DB_URL = " + url);
+        System.out.println("DB_USERNAME = " + username);
+        System.out.println("DB_PASSWORD = " + (password == null ? "NULL" : "Loaded"));
 
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             con = DriverManager.getConnection(url, username, password);
