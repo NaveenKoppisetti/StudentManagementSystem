@@ -1,0 +1,25 @@
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Build
+target/
+bin/
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Temporary Files
+*.tmp
