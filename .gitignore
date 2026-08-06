@@ -23,3 +23,6 @@ Thumbs.db
 
 # Temporary Files
 *.tmp
+
+# Eclipse Build
+build/
